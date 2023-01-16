@@ -24,7 +24,7 @@ Config.ClothingCategory = {
     Satchels = 0x94504D26,
     Gunbelts = 0x9B2C8B89,
     Buckles = 0xFAE9107F,
-    Skirts = 0x2026C46D,
+    Skirts = 0xA0E3AB7F,
     Armor = 0x72E6EF74,
     Hair = 0x8E84A2AA,
 }
