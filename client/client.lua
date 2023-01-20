@@ -405,6 +405,158 @@ end)
 
 ----------------------------------------------------------------------------------------------
 
+-- remove all clothing
+RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
+    local playerPed = PlayerPedId()
+    -- remove hat
+    local isWearHat = IsPedUsingComponent(playerPed, Config.ClothingCategory.Hat)
+    if isWearHat then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Hat)
+    end
+    -- remove shirt
+    local isWearShirt = IsPedUsingComponent(playerPed, Config.ClothingCategory.Shirt)
+    if isWearShirt then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Shirt)
+    end
+    -- remove pants
+    local isWearPants = IsPedUsingComponent(playerPed, Config.ClothingCategory.Pants)
+    if isWearPants then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Pants)
+    end
+    -- remove boots
+    local isWearBoots = IsPedUsingComponent(playerPed, Config.ClothingCategory.Boots)
+    if isWearBoots then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Boots)
+    end
+    -- remove coat
+    local isWearCoats = IsPedUsingComponent(playerPed, Config.ClothingCategory.Coats)
+    if isWearCoats then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Coats)
+    end
+    -- remove ClosedCoats
+    local isWearClosedCoats = IsPedUsingComponent(playerPed, Config.ClothingCategory.ClosedCoats)
+    if isWearClosedCoats then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.ClosedCoats)
+    end
+    -- remove Glove
+    local isWearClosedGlove = IsPedUsingComponent(playerPed, Config.ClothingCategory.Glove)
+    if isWearGlove then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Glove)
+    end
+    -- remove Glove
+    local isWearGlove = IsPedUsingComponent(playerPed, Config.ClothingCategory.Glove)
+    if isWearGlove then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Glove)
+    end
+    -- remove Vest
+    local isWearVest = IsPedUsingComponent(playerPed, Config.ClothingCategory.Vest)
+    if isWearVest then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Vest)
+    end
+    -- remove Ponchos
+    local isWearPonchos = IsPedUsingComponent(playerPed, Config.ClothingCategory.Ponchos)
+    if isWearPonchos then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Ponchos)
+    end
+    -- remove Sleeve
+    local isWearSleeve = IsPedUsingComponent(playerPed, Config.ClothingCategory.Sleeve)
+    if isWearSleeve then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Sleeve)
+    end
+    -- remove FoldPants
+    local isWearFoldPants = IsPedUsingComponent(playerPed, Config.ClothingCategory.FoldPants)
+    if isWearFoldPants then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.FoldPants)
+    end
+    -- remove Eyewear
+    local isWearEyewear = IsPedUsingComponent(playerPed, Config.ClothingCategory.Eyewear)
+    if isWearEyewear then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Eyewear)
+    end
+    -- remove Belts
+    local isWearBelts = IsPedUsingComponent(playerPed, Config.ClothingCategory.Belts)
+    if isWearBelts then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Belts)
+    end
+    -- remove Cloaks
+    local isWearCloaks = IsPedUsingComponent(playerPed, Config.ClothingCategory.Cloaks)
+    if isWearCloaks then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Cloaks)
+    end
+    -- remove Chaps
+    local isWearChaps = IsPedUsingComponent(playerPed, Config.ClothingCategory.Chaps)
+    if isWearChaps then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Chaps)
+    end
+    -- remove Badges
+    local isWearBadges = IsPedUsingComponent(playerPed, Config.ClothingCategory.Badges)
+    if isWearBadges then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Badges)
+    end
+    -- remove Masks
+    local isWearMasks = IsPedUsingComponent(playerPed, Config.ClothingCategory.Masks)
+    if isWearMasks then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Masks)
+    end
+    -- remove Neckwear
+    local isWearNeckwear = IsPedUsingComponent(playerPed, Config.ClothingCategory.Neckwear)
+    if isWearNeckwear then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Neckwear)
+    end
+    -- remove Accessories
+    local isWearAccessories = IsPedUsingComponent(playerPed, Config.ClothingCategory.Accessories)
+    if isWearAccessories then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Accessories)
+    end
+    -- remove Gauntlets
+    local isWearGauntlets = IsPedUsingComponent(playerPed, Config.ClothingCategory.Gauntlets)
+    if isWearGauntlets then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Gauntlets)
+    end
+    -- remove Neckties
+    local isWearNeckties = IsPedUsingComponent(playerPed, Config.ClothingCategory.Neckties)
+    if isWearNeckties then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Neckties)
+    end
+    -- remove Loadouts
+    local isWearLoadouts = IsPedUsingComponent(playerPed, Config.ClothingCategory.Loadouts)
+    if isWearLoadouts then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Loadouts)
+    end
+    -- remove Suspenders
+    local isWearSuspenders = IsPedUsingComponent(playerPed, Config.ClothingCategory.Suspenders)
+    if isWearSuspenders then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Suspenders)
+    end
+    -- remove Satchels
+    local isWearSatchels = IsPedUsingComponent(playerPed, Config.ClothingCategory.Satchels)
+    if isWearSatchels then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Satchels)
+    end
+    -- remove Gunbelts
+    local isWearGunbelts = IsPedUsingComponent(playerPed, Config.ClothingCategory.Gunbelts)
+    if isWearGunbelts then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Gunbelts)
+    end
+    -- remove Buckles
+    local isWearBuckles = IsPedUsingComponent(playerPed, Config.ClothingCategory.Buckles)
+    if isWearBuckles then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Buckles)
+    end
+    -- remove Skirts
+    local isWearSkirts = IsPedUsingComponent(playerPed, Config.ClothingCategory.Skirts)
+    if isWearSkirts then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Skirts)
+    end
+    -- remove Armor
+    local isWearArmor = IsPedUsingComponent(playerPed, Config.ClothingCategory.Armor)
+    if isWearArmor then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Armor)
+    end
+end)
+
+----------------------------------------------------------------------------------------------
+
 function UpdateWearableState(ped, clothHash, wearableHash, p3, p4 , p5)
     Citizen.InvokeNative(0x66B957AAC2EAAEAB, ped, clothHash, wearableHash, p3, p4, p5)
     NativeUpdatePedVariation(ped)
