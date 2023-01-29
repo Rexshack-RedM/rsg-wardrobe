@@ -439,14 +439,9 @@ RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
         RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.ClosedCoats)
     end
     -- remove Glove
-    local isWearClosedGlove = IsPedUsingComponent(playerPed, Config.ClothingCategory.Glove)
+    local isWearClosedGlove = IsPedUsingComponent(playerPed, Config.ClothingCategory.Gloves)
     if isWearGlove then
-        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Glove)
-    end
-    -- remove Glove
-    local isWearGlove = IsPedUsingComponent(playerPed, Config.ClothingCategory.Glove)
-    if isWearGlove then
-        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Glove)
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Gloves)
     end
     -- remove Vest
     local isWearVest = IsPedUsingComponent(playerPed, Config.ClothingCategory.Vest)
