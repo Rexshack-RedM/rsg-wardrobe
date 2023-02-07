@@ -79,6 +79,11 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
             clothingData.currentShirt = ""
         end
     elseif clothingName == "pants" then
+        if not IsPedMale(playerPed) then
+            NativeSetPedComponentEnabled(playerPed, 0x00481D0F, false, true) -- Temporary skirt
+            Citizen.InvokeNative(0xD710A5007C2AC539, playerPed, 0xA0E3AB7F, 0) -- Skirts
+            Citizen.InvokeNative(0xCC8CA3E88256E58F, playerPed, 0, 1, 1, 1, 0)
+        end
         --need to remove boot as well to avoid blank lower body
         if clothingData.currentBoots == "" then
             clothingData.currentBoots = exports['rsg-clothes']:GetClothesCurrentComponentHash("boots")
@@ -542,6 +547,11 @@ RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
     local isWearSkirts = IsPedUsingComponent(playerPed, Config.ClothingCategory.Skirts)
     if isWearSkirts then
         RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Skirts)
+    end
+    if not IsPedMale(playerPed) then
+        NativeSetPedComponentEnabled(playerPed, 0x00481D0F, false, true) -- Temporary skirt
+        Citizen.InvokeNative(0xD710A5007C2AC539, playerPed, 0xA0E3AB7F, 0) -- Skirts
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, playerPed, 0, 1, 1, 1, 0)
     end
     -- remove Armor
     local isWearArmor = IsPedUsingComponent(playerPed, Config.ClothingCategory.Armor)
