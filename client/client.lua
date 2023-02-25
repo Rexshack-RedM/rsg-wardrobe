@@ -558,6 +558,16 @@ RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
     if isWearArmor then
         RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.Armor)
     end
+    -- remove left holster
+    local isWearLeftHolster = IsPedUsingComponent(playerPed, Config.ClothingCategory.HolsterLeft)
+    if isWearLeftHolster then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.HolsterLeft)
+    end
+    -- remove right holster
+    local isWearRightHolster = IsPedUsingComponent(playerPed, Config.ClothingCategory.HolsterRight)
+    if isWearRightHolster then
+        RemoveItemFromPedByCategory(playerPed, Config.ClothingCategory.HolsterRight)
+    end
 end)
 
 ----------------------------------------------------------------------------------------------
@@ -604,6 +614,7 @@ end
 
 function LoadUpperBody(target, data)
     local output = GetSkinColorFromBodySize(tonumber(data.body_size), tonumber(data.skin_tone))
+    local torso = nil
     if IsPedMale(target) then
         if tonumber(data.skin_tone) == 1 then
             torso = ComponentsMale["BODIES_UPPER"][output]
@@ -643,6 +654,9 @@ end
 function LoadLowerBody(target, data)
 
     local output = GetSkinColorFromBodySize(tonumber(data.body_size), tonumber(data.skin_tone))
+    local legs = nil
+
+    if output == nil then return end
 
     if IsPedMale(target) then
         if tonumber(data.skin_tone) == 1 then
