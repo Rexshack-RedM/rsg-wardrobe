@@ -27,4 +27,6 @@ Config.ClothingCategory = {
     Skirts = 0xA0E3AB7F,
     Armor = 0x72E6EF74,
     Hair = 0x8E84A2AA,
+    HolsterLeft = 0xB6B6122D,
+    HolsterRight = 0xB9E2FA01
 }
