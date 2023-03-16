@@ -179,9 +179,9 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
 
         if clothingData.currentSleeve == "" then
             clothingData.currentSleeve = exports['rsg-clothes']:GetClothesCurrentComponentHash("shirts_full")
-            UpdateWearableState(playerPed, clothingData.currentSleeve, wearableState.sleeves, 0, true , 1)
+            UpdateWearableState(playerPed, clothingData.currentSleeve, GetHashKey("Closed_Collar_Rolled_Sleeve"), 0, true , 1)
         else
-            UpdateWearableState(playerPed, clothingData.currentSleeve, wearableState.base, 0, true , 1)
+            UpdateWearableState(playerPed, clothingData.currentSleeve, GetHashKey('BASE'), 0, true , 1)
             clothingData.currentSleeve = ""
         end
     elseif clothingName == "eyewear" then
