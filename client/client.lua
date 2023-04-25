@@ -475,84 +475,55 @@ end
 function LoadUpperBody(target, data)
     local output = GetSkinColorFromBodySize(tonumber(data.body_size), tonumber(data.skin_tone))
     local torso = nil
+
+    if not output then return end
+
     if IsPedMale(target) then
-        if tonumber(data.skin_tone) == 1 then
-            torso = ComponentsMale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 2 then
-            torso = ComponentsMale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 3 then
-            torso = ComponentsMale.BODIES_UPPER[output]
-        elseif tonumber(data.skin_tone) == 4 then
-            torso = ComponentsMale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 5 then
-            torso = ComponentsMale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 6 then
-            torso = ComponentsMale["BODIES_UPPER"][output]
-        else
+        if ComponentsMale["BODIES_UPPER"] then
             torso = ComponentsMale["BODIES_UPPER"][output]
         end
-    else
-        if tonumber(data.skin_tone) == 1 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 2 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 3 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 4 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 5 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        elseif tonumber(data.skin_tone) == 6 then
-            torso = ComponentsFemale["BODIES_UPPER"][output]
-        else
-            torso = ComponentsFemale["BODIES_UPPER"][output]
+
+        if torso then
+            NativeSetPedComponentEnabled(target, tonumber(torso), false, true)
         end
+
+        return
     end
-    NativeSetPedComponentEnabled(target, tonumber(torso), false, true)
+
+    if ComponentsFemale["BODIES_UPPER"] then
+        torso = ComponentsFemale["BODIES_UPPER"][output]
+    end
+
+    if torso then
+        NativeSetPedComponentEnabled(target, tonumber(torso), false, true)
+    end
 end
 
 function LoadLowerBody(target, data)
-
     local output = GetSkinColorFromBodySize(tonumber(data.body_size), tonumber(data.skin_tone))
     local legs = nil
 
-    if output == nil then return end
+    if not output then return end
 
     if IsPedMale(target) then
-        if tonumber(data.skin_tone) == 1 then
-            legs = ComponentsMale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 2 then
-            legs = ComponentsMale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 3 then
-            legs = ComponentsMale['BODIES_LOWER'][output]
-        elseif tonumber(data.skin_tone) == 4 then
-            legs = ComponentsMale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 5 then
-            legs = ComponentsMale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 6 then
-            legs = ComponentsMale["BODIES_LOWER"][output]
-        else
+        if ComponentsMale["BODIES_LOWER"] then
             legs = ComponentsMale["BODIES_LOWER"][output]
         end
-    else
-        if tonumber(data.skin_tone) == 1 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 2 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 3 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 4 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 5 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        elseif tonumber(data.skin_tone) == 6 then
-            legs = ComponentsFemale["BODIES_LOWER"][output]
-        else
-            legs = ComponentsFemale["BODIES_LOWER"][output]
 
+        if legs then
+            NativeSetPedComponentEnabled(target, tonumber(legs), false, true)
         end
+
+        return
     end
-    NativeSetPedComponentEnabled(target, tonumber(legs), false, true)
+
+    if ComponentsFemale["BODIES_LOWER"] then
+        legs = ComponentsFemale["BODIES_LOWER"][output]
+    end
+
+    if legs then
+        NativeSetPedComponentEnabled(target, tonumber(legs), false, true)
+    end
 end
 
 function GetSkinColorFromBodySize(body, color)
