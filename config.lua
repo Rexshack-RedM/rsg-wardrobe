@@ -1,32 +1,72 @@
 Config = {}
 
-Config.ClothingCategory = {
-    Hat = 0x9925C067,
-    Shirt = 0x2026C46D,
-    Boots = 0x777EC6EF,
-    Pants = 0x1D4C528A,
-    Coats = 0xE06D30CE,
-    ClosedCoats = 0x662AC34,
-    Gloves = 0xEABE0032,
-    Ponchos = 0xAF14310B,
-    Vest = 0x485EE834,
-    Eyewear = 0x5E47CA6,
-    Belts = 0xA6D134C6,
-    Cloaks = 0x3C1A74CD,
-    Chaps = 0x3107499B,
-    Masks = 0x7505EF42,
-    Neckwear = 0x5FC29285,
-    Accessories = 0x79D7DF96,
-    Gauntlets = 0x91CE9B20,
-    Neckties = 0x7A96FACA,
-    Loadouts = 0x83887E88,
-    Suspenders = 0x877A2CF7,
-    Satchels = 0x94504D26,
-    Gunbelts = 0x9B2C8B89,
-    Buckles = 0xFAE9107F,
-    Skirts = 0xA0E3AB7F,
-    Armor = 0x72E6EF74,
-    Hair = 0x8E84A2AA,
-    HolsterLeft = 0xB6B6122D,
-    HolsterRight = 0xB9E2FA01
+Config.ClothingComponents =
+{
+    {name = 'accessories',      comps = 'accessories',   data = 'currentAccessories', hash = 2044190614}, -- Accessories
+    {name = 'armor',            comps = 'armor',         data = 'currentArmor',       hash = 1927737204}, -- Armor
+    {name = 'belts',            comps = 'belts',         data = 'currentBelts',       hash = 2798728390}, -- Belts
+    {name = 'boots',            comps = 'boots',         data = 'currentBoots',       hash = 2004797167}, -- Boots
+    {name = 'buckles',          comps = 'belt_buckles',  data = 'currentBuckles',     hash = 4209578111}, -- Buckles
+    {name = 'chaps',            comps = 'chaps',         data = 'currentChaps',       hash = 822561179},  -- Chaps
+    {name = 'cloaks',           comps = 'cloaks',        data = 'currentCloaks',      hash = 1008366797}, -- Cloaks
+    {name = 'closedcoats',      comps = 'coats_closed',  data = 'currentClosedCoats', hash = 107129908},  -- ClosedCoats
+    {name = 'coats',            comps = 'coats',         data = 'currentCoats',       hash = 3765252302}, -- Coats
+    {name = 'eyewear',          comps = 'eyewear',       data = 'currentEyewear',     hash = 98860198},   -- Eyewear
+    {name = 'gauntlets',        comps = 'gauntlets',     data = 'currentGauntlets',   hash = 2446236448}, -- Gauntlets
+    {name = 'glove',            comps = 'gloves',        data = 'currentGlove',       hash = 3938320434}, -- Gloves
+    {name = 'gunbelts',         comps = 'gunbelts',      data = 'currentGunbelts',    hash = 2603387785}, -- Gunbelts
+    {name = 'hair_accessories', comps = 'currentHair',   data = 'currentHat',         hash = 2391057066}, -- Hair
+    {name = 'hat',              comps = 'hats',          data = 'currentHat',         hash = 2569388135}, -- Hat
+    {name = 'holster_left',     comps = 'holsters_left', data = 'currentHolsterLeft', hash = 3065385517}, -- HolsterLeft
+    {name = 'holster_right',    comps = '',              data = '',                   hash = 3118660097}, -- HolsterRight
+    {name = 'loadouts',         comps = 'loadouts',      data = 'currentLoadouts',    hash = 2206760584}, -- Loadouts
+    {name = 'masks',            comps = 'masks',         data = 'currentMasks',       hash = 1963323202}, -- Masks
+    {name = 'neckties',         comps = 'neckties',      data = 'currentNeckties',    hash = 2056714954}, -- Neckties
+    {name = 'neckwear',         comps = 'neckwear',      data = 'currentNeckwear',    hash = 1606587013}, -- Neckwear
+    {name = 'pants',            comps = 'pants',         data = 'currentPants',       hash = 491541130},  -- Pants
+    {name = 'ponchos',          comps = 'ponchos',       data = 'currentPonchos',     hash = 2937336075}, -- Ponchos
+    {name = 'satchels',         comps = 'satchels',      data = 'currentSatchels',    hash = 2488290598}, -- Satchels
+    {name = 'shirt',            comps = 'shirts_full',   data = 'currentShirt',       hash = 539411565},  -- Shirt
+    {name = 'skirts',           comps = 'skirts',        data = 'currentSkirts',      hash = 2699275135}, -- Skirts
+    {name = 'sleeve',           comps = 'shirts_full',   data = 'currentSleeve',      hash = 0},          -- Sleeve
+    {name = 'suspenders',       comps = 'shirts_full',   data = 'currentSuspenders',  hash = 2272931063}, -- Suspenders
+    {name = 'vest',             comps = 'vests',         data = 'currentVest',        hash = 1214179380}  -- Vest
+}
+
+Config.SkinColours =
+{
+    {body = 1, colour = 1, index = 7},
+    {body = 1, colour = 2, index = 10},
+    {body = 1, colour = 3, index = 9},
+    {body = 1, colour = 4, index = 11},
+    {body = 1, colour = 5, index = 8},
+    {body = 1, colour = 6, index = 12},
+
+    {body = 2, colour = 1, index = 1},
+    {body = 2, colour = 2, index = 4},
+    {body = 2, colour = 3, index = 3},
+    {body = 2, colour = 4, index = 5},
+    {body = 2, colour = 5, index = 2},
+    {body = 2, colour = 6, index = 6},
+
+    {body = 3, colour = 1, index = 13},
+    {body = 3, colour = 2, index = 16},
+    {body = 3, colour = 3, index = 15},
+    {body = 3, colour = 4, index = 17},
+    {body = 3, colour = 5, index = 14},
+    {body = 3, colour = 6, index = 18},
+
+    {body = 4, colour = 1, index = 19},
+    {body = 4, colour = 2, index = 22},
+    {body = 4, colour = 3, index = 21},
+    {body = 4, colour = 4, index = 23},
+    {body = 4, colour = 5, index = 20},
+    {body = 4, colour = 6, index = 24},
+
+    {body = 5, colour = 1, index = 25},
+    {body = 5, colour = 2, index = 28},
+    {body = 5, colour = 3, index = 27},
+    {body = 5, colour = 4, index = 29},
+    {body = 5, colour = 5, index = 26},
+    {body = 5, colour = 6, index = 30}
 }
