@@ -8,7 +8,7 @@ RSGCore.Functions.CreateCallback('rsg-wardrobe:server:getPlayerSkin', function(s
     cb(skins[1])
 end)
 
-RSGCore.Commands.Add("removeclothes", "removes all clothing", {}, false, function(source)
+RSGCore.Commands.Add("undress", "removes all clothing", {}, false, function(source)
     local src = source
     TriggerClientEvent('rsg-wardrobe:client:removeAllClothing', src)
 end)
