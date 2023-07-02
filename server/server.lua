@@ -147,3 +147,21 @@ RSGCore.Commands.Add("hairaccessories", "hair accessories on/off", {}, false, fu
     local src = source
     TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "hair_accessories")
 end)
+
+RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
+    local src = source
+    local User = RSGCore.Functions.GetPlayer(src)
+    local citizenid = User.PlayerData.citizenid
+    local license = RSGCore.Functions.GetIdentifier(source, 'license')
+    local _clothes =  MySQL.Sync.fetchAll('SELECT * FROM playerclothe WHERE citizenid = ? AND license = ?', {citizenid, license})
+
+    if _clothes[1] then
+        _clothes = json.decode(_clothes[1].clothes)
+    else
+        _clothes = {}
+    end
+
+    if _clothes then
+        TriggerClientEvent("rsg-clothes:ApplyClothes", src, _clothes)
+    end
+end)
