@@ -2,9 +2,8 @@ fx_version 'cerulean'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 game 'rdr3'
 
-author 'RexShack#3041'
 description 'rsg-wardrobe'
-version '1.0.0'
+version '1.0.1'
 
 client_scripts {
     'client/client.lua'
@@ -24,7 +23,6 @@ shared_scripts {
 dependencies {
     'rsg-core',
     'rsg-appearance',
-    'rsg-clothes'
 }
 
 lua54 'yes'
