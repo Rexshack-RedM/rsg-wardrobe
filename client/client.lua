@@ -212,7 +212,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
 
                 -- Need to remove boot as well to avoid blank lower body
                 if clothingData['currentBoots'] == 0 then
-                    clothingData['currentBoots'] = exports['rsg-clothes']:GetClothesCurrentComponentHash('boots')
+                    clothingData['currentBoots'] = exports['rsg-appearance']:GetClothesCurrentComponentHash('boots')
                     local isWearingComps = IsPedUsingComponent(playerPed, 2004797167)
 
                     if isWearingComps then
@@ -225,7 +225,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                 end
 
                 if clothingData[data] == 0 then
-                    clothingData[data] = exports['rsg-clothes']:GetClothesCurrentComponentHash(comps)
+                    clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
                     local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
                     if isWearingComps then
@@ -246,7 +246,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
 
             if name == 'sleeve' then
                 if clothingData[data] == 0 then
-                    clothingData[data] = exports['rsg-clothes']:GetClothesCurrentComponentHash(comps)
+                    clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
 
                     UpdateWearableState(playerPed, clothingData[data], `Closed_Collar_Rolled_Sleeve`, 0, true , 1)
                 else
@@ -259,7 +259,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
             end
 
             if clothingData[data] == 0 then
-                clothingData[data] = exports['rsg-clothes']:GetClothesCurrentComponentHash(comps)
+                clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
                 local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
                 if isWearingComps then
