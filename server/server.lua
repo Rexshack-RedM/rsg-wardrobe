@@ -184,6 +184,21 @@ RSGCore.Commands.Add("hairaccessories", "hair accessories on/off", {}, false, fu
     TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "hair_accessories")
 end)
 
+RSGCore.Commands.Add("leftring", "left rings on/off", {}, false, function(source)
+    local src = source
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "jewelry_rings_left")
+end)
+
+RSGCore.Commands.Add("rightring", "right rings on/off", {}, false, function(source)
+    local src = source
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "jewelry_rings_right")
+end)
+
+RSGCore.Commands.Add("leftholster", "left holster on/off", {}, false, function(source)
+    local src = source
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "holster_left")
+end)
+
 RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
