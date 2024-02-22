@@ -283,6 +283,9 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                     or name == 'skirts'
                     or name == 'armor'
                     or name == 'hair_accessories'
+                    or name == 'jewelry_rings_left'
+					or name == 'jewelry_rings_right'
+					or name == 'holster_left'
                     then
                         Wait(10)
 
