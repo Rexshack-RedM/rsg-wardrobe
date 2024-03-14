@@ -208,7 +208,7 @@ RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
 
     local citizenid = Player.PlayerData.citizenid
     local license = RSGCore.Functions.GetIdentifier(source, 'license')
-    local _clothes =  MySQL.Sync.fetchAll('SELECT * FROM playerclothe WHERE citizenid = ? AND license = ?', {citizenid, license})
+    local _clothes =  MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ?', {citizenid})
 
     if _clothes[1] then
         _clothes = json.decode(_clothes[1].clothes)
