@@ -212,7 +212,8 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
 
                 -- Need to remove boot as well to avoid blank lower body
                 if clothingData['currentBoots'] == 0 then
-                    clothingData['currentBoots'] = exports['rsg-appearance']:GetClothesCurrentComponentHash('boots')
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData['currentBoots'] = ClothesCache['boots'].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, 2004797167)
 
                     if isWearingComps then
@@ -220,24 +221,21 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                     end
                 else
                     NativeSetPedComponentEnabled(playerPed, clothingData['currentBoots'], false, true)
-
                     clothingData['currentBoots'] = 0
                 end
 
                 if clothingData[data] == 0 then
-                    clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData[data] = ClothesCache[comps].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
                     if isWearingComps then
                         RemoveItemFromPedByCategory(playerPed, hash)
-
                         Wait(10)
-
                         LoadLowerBody(playerPed, playerSkin)
                     end
                 else
                     NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
-
                     clothingData[data] = 0
                 end
 
@@ -246,12 +244,11 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
 
             if name == 'sleeve' then
                 if clothingData[data] == 0 then
-                    clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
-
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData[data] = ClothesCache[comps].hash
                     UpdateWearableState(playerPed, clothingData[data], `Closed_Collar_Rolled_Sleeve`, 0, true , 1)
                 else
                     UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
-
                     clothingData[data] = 0
                 end
 
@@ -259,7 +256,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
             end
 
             if clothingData[data] == 0 then
-                clothingData[data] = exports['rsg-appearance']:GetClothesCurrentComponentHash(comps)
+
                 local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
                 if isWearingComps then
@@ -288,13 +285,13 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                     or name == 'holster_left'
                     then
                         Wait(10)
-
                         LoadUpperBody(playerPed, playerSkin)
                     end
                 end
             else
+                ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                clothingData[data] = ClothesCache[comps].hash
                 NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
-
                 clothingData[data] = 0
             end
 
