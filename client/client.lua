@@ -287,12 +287,12 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                         Wait(10)
                         LoadUpperBody(playerPed, playerSkin)
                     end
+                else
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData[data] = ClothesCache[comps].hash
+                    NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
+                    clothingData[data] = 0
                 end
-            else
-                ClothesCache = exports['rsg-appearance']:GetClothesCache()
-                clothingData[data] = ClothesCache[comps].hash
-                NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
-                clothingData[data] = 0
             end
 
             ::continue::
