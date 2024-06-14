@@ -29,6 +29,8 @@ Config.ClothingComponents =
     {name = 'shirt',               comps = 'shirts_full',         data = 'currentShirt',       hash = 539411565},  -- Shirt
     {name = 'skirts',              comps = 'skirts',              data = 'currentSkirts',      hash = 2699275135}, -- Skirts
     {name = 'sleeve',              comps = 'shirts_full',         data = 'currentSleeve',      hash = 0},          -- Sleeve
+    {name = 'collar1',             comps = 'shirts_full',         data = 'currentCollar',      hash = 0},          -- Collar/SleevesUp
+    {name = 'collar2',             comps = 'shirts_full',         data = 'currentCollar',      hash = 0},          -- Collar/SleevesDown
     {name = 'suspenders',          comps = 'shirts_full',         data = 'currentSuspenders',  hash = 2272931063}, -- Suspenders
     {name = 'vest',                comps = 'vests',               data = 'currentVest',        hash = 1214179380},  -- Vest
     {name = 'jewelry_rings_left',  comps = 'jewelry_rings_left',  data = 'currentLeftring',    hash = 4050263331},  -- Left ring

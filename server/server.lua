@@ -199,6 +199,16 @@ RSGCore.Commands.Add("leftholster", "left holster on/off", {}, false, function(s
     TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "holster_left")
 end)
 
+RSGCore.Commands.Add("collar1", "collar with sleeves up", {}, false, function(source)
+    local src = source
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "collar1")
+end)
+
+RSGCore.Commands.Add("collar2", "collar with sleeves down", {}, false, function(source)
+    local src = source
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "collar2")
+end)
+
 RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)

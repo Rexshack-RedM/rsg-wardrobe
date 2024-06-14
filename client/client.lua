@@ -34,6 +34,7 @@ local clothingData =
     currentShirt        = 0,
     currentSkirts       = 0,
     currentSleeve       = 0,
+    currentCollar       = 0,
     currentSuspenders   = 0,
     currentVest         = 0,
 }
@@ -246,7 +247,34 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                 if clothingData[data] == 0 then
                     ClothesCache = exports['rsg-appearance']:GetClothesCache()
                     clothingData[data] = ClothesCache[comps].hash
-                    UpdateWearableState(playerPed, clothingData[data], `Closed_Collar_Rolled_Sleeve`, 0, true , 1)
+                    UpdateWearableState(playerPed, clothingData[data], `closed_collar_rolled_sleeve`, 0, true , 1)
+                else
+                    UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
+                    clothingData[data] = 0
+                end
+
+                goto continue
+            end
+
+            if name == 'collar1' then
+
+                if clothingData[data] == 0 then
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData[data] = ClothesCache[comps].hash
+                    UpdateWearableState(playerPed, clothingData[data], `open_collar_rolled_sleeve`, 0, true , 1)
+                else
+                    UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
+                    clothingData[data] = 0
+                end
+
+                goto continue
+            end
+
+            if name == 'collar2' then
+                if clothingData[data] == 0 then
+                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    clothingData[data] = ClothesCache[comps].hash
+                    UpdateWearableState(playerPed, clothingData[data], `open_collar_full_sleeve`, 0, true , 1)
                 else
                     UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
                     clothingData[data] = 0
