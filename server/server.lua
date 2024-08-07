@@ -195,6 +195,6 @@ RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
     end
 
     if _clothes then
-        TriggerClientEvent('rsg-clothes:client:ApplyClothes', src, _clothes)
+        TriggerClientEvent('rsg-appearance:client:ApplyClothes', src, _clothes)
     end
 end)
