@@ -3,6 +3,7 @@ local RSGCore = exports['rsg-core']:GetCoreObject()
 RSGCore.Functions.CreateCallback('rsg-wardrobe:server:getPlayerSkin', function(source, cb)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
+    if not Player then return end
     local cid = Player.PlayerData.citizenid
     local skins = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ?', {cid})
     cb(skins[1])
