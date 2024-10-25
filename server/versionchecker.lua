@@ -17,8 +17,8 @@ local function CheckVersion()
             return
         end
 
-        -- versionCheckPrint('success', ('Current Version: %s'):format(currentVersion))
-        -- versionCheckPrint('success', ('Latest Version: %s'):format(text))
+        versionCheckPrint('success', ('Current Version: %s'):format(currentVersion))
+        versionCheckPrint('success', ('Latest Version: %s'):format(text))
 
         if text == currentVersion then
             versionCheckPrint('success', 'You are running the latest version.')
