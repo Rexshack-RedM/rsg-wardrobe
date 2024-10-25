@@ -3,7 +3,6 @@
     "cl_text_01": "Test",
     "sv_text_01": "Test",
 
-    "sv_text_01": "removes all clothing",
     "sv_text_02": "hat on/off",
     "sv_text_03": "shirt on/off",
     "sv_text_04": "pants on/off",
@@ -36,5 +35,6 @@
     "sv_text_31": "left holster on/off",
     "sv_text_32": "collar with sleeves up",
     "sv_text_33": "collar with sleeves down",
-    "sv_text_34": "Wear all clothing"
+    "sv_text_34": "Wear all clothing",
+    "sv_text_35": "removes all clothing"
 }
