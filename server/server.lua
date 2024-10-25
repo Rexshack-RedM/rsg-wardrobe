@@ -1,4 +1,5 @@
 local RSGCore = exports['rsg-core']:GetCoreObject()
+lib.locale()
 
 RSGCore.Functions.CreateCallback('rsg-wardrobe:server:getPlayerSkin', function(source, cb)
     local src = source
@@ -9,7 +10,7 @@ RSGCore.Functions.CreateCallback('rsg-wardrobe:server:getPlayerSkin', function(s
     cb(skins[1])
 end)
 
-RSGCore.Commands.Add("undress", "removes all clothing", {}, false, function(source)
+RSGCore.Commands.Add('undress', locale('sv_text_35'), {}, false, function(source)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
     local jailed = Player.PlayerData.metadata['injail']
@@ -19,167 +20,167 @@ RSGCore.Commands.Add("undress", "removes all clothing", {}, false, function(sour
     TriggerClientEvent('rsg-wardrobe:client:removeAllClothing', src)
 end)
 
-RSGCore.Commands.Add("hat", "hat on/off", {}, false, function(source)
+RSGCore.Commands.Add('hat', locale('sv_text_02'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "hat")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'hat')
 end)
 
-RSGCore.Commands.Add("shirt", "shirt on/off", {}, false, function(source)
+RSGCore.Commands.Add('shirt', locale('sv_text_03'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "shirt")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'shirt')
 end)
 
-RSGCore.Commands.Add("pants", "pants on/off", {}, false, function(source)
+RSGCore.Commands.Add('pants', locale('sv_text_04'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "pants")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'pants')
 end)
 
-RSGCore.Commands.Add("boots", "boots on/off", {}, false, function(source)
+RSGCore.Commands.Add('boots', locale('sv_text_05'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "boots")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'boots')
 end)
 
-RSGCore.Commands.Add("coat", "coat on/off", {}, false, function(source)
+RSGCore.Commands.Add('coat', locale('sv_text_06'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "coats")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'coats')
 end)
 
-RSGCore.Commands.Add("closedcoat", "closed coat on/off", {}, false, function(source)
+RSGCore.Commands.Add('closedcoat', locale('sv_text_07'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "closedcoats")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'closedcoats')
 end)
 
-RSGCore.Commands.Add("gloves", "gloves on/off", {}, false, function(source)
+RSGCore.Commands.Add('gloves', locale('sv_text_08'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "glove")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'glove')
 end)
 
-RSGCore.Commands.Add("poncho", "ponchos on/off", {}, false, function(source)
+RSGCore.Commands.Add('poncho', locale('sv_text_09'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "ponchos")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'ponchos')
 end)
 
-RSGCore.Commands.Add("vest", "vest on/off", {}, false, function(source)
+RSGCore.Commands.Add('vest', locale('sv_text_10'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "vest")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'vest')
 end)
 
-RSGCore.Commands.Add("sleeve", "sleeve shirt on/off", {}, false, function(source)
+RSGCore.Commands.Add('sleeve', locale('sv_text_11'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "sleeve")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'sleeve')
 end)
 
-RSGCore.Commands.Add("eyewear", "eyewear on/off", {}, false, function(source)
+RSGCore.Commands.Add('eyewear', locale('sv_text_12'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "eyewear")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'eyewear')
 end)
 
-RSGCore.Commands.Add("belt", "belts on/off", {}, false, function(source)
+RSGCore.Commands.Add('belt', locale('sv_text_13'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "belts")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'belts')
 end)
 
-RSGCore.Commands.Add("cloak", "cloaks on/off", {}, false, function(source)
+RSGCore.Commands.Add('cloak', locale('sv_text_14'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "cloaks")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'cloaks')
 end)
 
-RSGCore.Commands.Add("chaps", "chaps on/off", {}, false, function(source)
+RSGCore.Commands.Add('chaps', locale('sv_text_15'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "chaps")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'chaps')
 end)
 
-RSGCore.Commands.Add("mask", "masks on/off", {}, false, function(source)
+RSGCore.Commands.Add('mask', locale('sv_text_16'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "masks")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'masks')
 end)
 
-RSGCore.Commands.Add("neckwear", "neckwear on/off", {}, false, function(source)
+RSGCore.Commands.Add('neckwear', locale('sv_text_17'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "neckwear")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'neckwear')
 end)
 
-RSGCore.Commands.Add("accessories", "accessories on/off", {}, false, function(source)
+RSGCore.Commands.Add('accessories', locale('sv_text_18'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "accessories")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'accessories')
 end)
 
-RSGCore.Commands.Add("gauntlets", "gauntlets on/off", {}, false, function(source)
+RSGCore.Commands.Add('gauntlets', locale('sv_text_19'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "gauntlets")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'gauntlets')
 end)
 
-RSGCore.Commands.Add("neckties", "neckties on/off", {}, false, function(source)
+RSGCore.Commands.Add('neckties', locale('sv_text_20'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "neckties")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'neckties')
 end)
 
-RSGCore.Commands.Add("loadouts", "loadouts on/off", {}, false, function(source)
+RSGCore.Commands.Add('loadouts', locale('sv_text_21'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "loadouts")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'loadouts')
 end)
 
-RSGCore.Commands.Add("suspenders", "suspenders on/off", {}, false, function(source)
+RSGCore.Commands.Add('suspenders', locale('sv_text_22'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "suspenders")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'suspenders')
 end)
 
-RSGCore.Commands.Add("satchels", "satchels on/off", {}, false, function(source)
+RSGCore.Commands.Add('satchels', locale('sv_text_23'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "satchels")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'satchels')
 end)
 
-RSGCore.Commands.Add("gunbelt", "gunbelt on/off", {}, false, function(source)
+RSGCore.Commands.Add('gunbelt', locale('sv_text_24'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "gunbelts")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'gunbelts')
 end)
 
-RSGCore.Commands.Add("buckle", "buckles on/off", {}, false, function(source)
+RSGCore.Commands.Add('buckle', locale('sv_text_25'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "buckles")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'buckles')
 end)
 
-RSGCore.Commands.Add("skirt", "skirts on/off", {}, false, function(source)
+RSGCore.Commands.Add('skirt', locale('sv_text_26'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "skirts")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'skirts')
 end)
 
-RSGCore.Commands.Add("armor", "armor on/off", {}, false, function(source)
+RSGCore.Commands.Add('armor', locale('sv_text_27'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "armor")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'armor')
 end)
 
-RSGCore.Commands.Add("hairaccessories", "hair accessories on/off", {}, false, function(source)
+RSGCore.Commands.Add('hairaccessories', locale('sv_text_28'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "hair_accessories")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'hair_accessories')
 end)
 
-RSGCore.Commands.Add("leftring", "left rings on/off", {}, false, function(source)
+RSGCore.Commands.Add('leftring', locale('sv_text_29'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "jewelry_rings_left")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'jewelry_rings_left')
 end)
 
-RSGCore.Commands.Add("rightring", "right rings on/off", {}, false, function(source)
+RSGCore.Commands.Add('rightring', locale('sv_text_30'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "jewelry_rings_right")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'jewelry_rings_right')
 end)
 
-RSGCore.Commands.Add("leftholster", "left holster on/off", {}, false, function(source)
+RSGCore.Commands.Add('leftholster', locale('sv_text_31'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "holster_left")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'holster_left')
 end)
 
-RSGCore.Commands.Add("collar1", "collar with sleeves up", {}, false, function(source)
+RSGCore.Commands.Add('collar1', locale('sv_text_32'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "collar1")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'collar1')
 end)
 
-RSGCore.Commands.Add("collar2", "collar with sleeves down", {}, false, function(source)
+RSGCore.Commands.Add('collar2', locale('sv_text_33'), {}, false, function(source)
     local src = source
-    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, "collar2")
+    TriggerClientEvent('rsg-wardrobe:client:OnOffClothing', src, 'collar2')
 end)
 
-RSGCore.Commands.Add("dress", "Wear all clothing", {}, false, function(source)
+RSGCore.Commands.Add('dress', locale('sv_text_34'), {}, false, function(source)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
     local jailed = Player.PlayerData.metadata['injail']
