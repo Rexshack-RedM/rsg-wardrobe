@@ -5,6 +5,11 @@ game 'rdr3'
 description 'rsg-wardrobe'
 version '1.1.0'
 
+shared_scripts {
+    '@ox_lib/init.lua',
+    'config.lua',
+}
+
 client_scripts {
     'client/client.lua'
 }
@@ -15,10 +20,8 @@ server_scripts {
     'server/versionchecker.lua'
 }
 
-shared_scripts {
-    '@rsg-core/shared/locale.lua',
-    'locales/en.lua', -- Change this to your preferred language
-    'config.lua',
+files {
+    'locales/*.json'
 }
 
 dependencies {
