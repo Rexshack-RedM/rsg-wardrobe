@@ -6,7 +6,6 @@
 # Dependancies
 - rsg-core
 - rsg-appearance
-- rsg-clothes
 
 # Installation:
 - ensure that the dependancies are added and started
