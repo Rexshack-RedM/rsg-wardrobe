@@ -1,6 +1,7 @@
 {
     "cl_text_01": "Prueba",
-    "sv_text_01": "quita toda la ropa",
+    "sv_text_01": "Prueba",
+
     "sv_text_02": "sombrero puesto/quitar",
     "sv_text_03": "camisa puesta/quitar",
     "sv_text_04": "pantalones puestos/quitar",
@@ -33,5 +34,6 @@
     "sv_text_31": "funda de la mano izquierda puesta/quitar",
     "sv_text_32": "cuello con mangas arriba",
     "sv_text_33": "cuello con mangas abajo",
-    "sv_text_34": "ponerse toda la ropa"
+    "sv_text_34": "ponerse toda la ropa",
+    "sv_text_35": "quita toda la ropa"
 }
