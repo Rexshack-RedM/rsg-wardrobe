@@ -317,6 +317,7 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                     end
                 else
                     ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    if not ClothesCache[comps] or not ClothesCache[comps].hash then return end
                     clothingData[data] = ClothesCache[comps].hash
                     NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
                     clothingData[data] = 0
