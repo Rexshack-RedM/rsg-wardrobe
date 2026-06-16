@@ -37,6 +37,10 @@ local clothingData =
     currentCollar       = 0,
     currentSuspenders   = 0,
     currentVest         = 0,
+    currentHolsterRight = 0,
+    currentLeftring     = 0,
+    currentRightring    = 0,
+    currentHairAccessories = 0,
 }
 
 local RemoveItemFromPedByCategory = function(ped, clothCategory)
@@ -174,24 +178,24 @@ AddEventHandler('RSGCore:Client:OnPlayerLoaded', function()
     Wait(3000)
 
     RSGCore.Functions.TriggerCallback('rsg-wardrobe:server:getPlayerSkin', function(result)
+        if not result or not result.skin then return end
+
         local ped = PlayerPedId()
         local male = IsPedMale(ped)
 
-        if male then
-            local bodyComponents = exports['rsg-appearance']:GetBodyComponents()
-            ComponentsMale = bodyComponents[1]
-            playerSkin = json.decode(result.skin)
+        local bodyComponents = exports['rsg-appearance']:GetBodyComponents()
 
-            return
+        if male then
+            ComponentsMale = bodyComponents[1]
+        else
+            ComponentsFemale = bodyComponents[1]
         end
 
-        local bodyComponents = exports['rsg-appearance']:GetBodyComponents()
-        ComponentsFemale= bodyComponents[1]
         playerSkin = json.decode(result.skin)
     end)
 end)
 
-RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
+local function toggleClothing(clothingName)
     local playerPed = PlayerPedId()
 
     for i = 1, #Config.ClothingComponents do
@@ -290,11 +294,15 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                 if isWearingComps then
                     RemoveItemFromPedByCategory(playerPed, hash)
 
-                    if name == 'pants'
-                    or name == 'eyewear'
+                    if name == 'chaps'
+                    or name == 'skirts'
+                    or name == 'boots'
+                    then
+                        Wait(10)
+                        LoadLowerBody(playerPed, playerSkin)
+                    elseif name == 'eyewear'
                     or name == 'belts'
                     or name == 'cloaks'
-                    or name == 'chaps'
                     or name == 'masks'
                     or name == 'neckwear'
                     or name == 'accessories'
@@ -305,7 +313,6 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
                     or name == 'satchels'
                     or name == 'gunbelts'
                     or name == 'buckles'
-                    or name == 'skirts'
                     or name == 'armor'
                     or name == 'hair_accessories'
                     or name == 'jewelry_rings_left'
@@ -327,10 +334,12 @@ RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', function(clothingName)
             ::continue::
         end
     end
-end)
+end
 
--- Remove all clothing
-RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
+RegisterNetEvent('rsg-wardrobe:client:OnOffClothing', toggleClothing)
+exports('ToggleClothing', toggleClothing)
+
+local function removeAllClothing()
     local ped = PlayerPedId()
     local male = IsPedMale(ped)
 
@@ -354,4 +363,18 @@ RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', function()
             end
         end
     end
+end
+
+RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', removeAllClothing)
+exports('RemoveAllClothing', removeAllClothing)
+
+exports('IsWearing', function(name)
+    local ped = PlayerPedId()
+    for i = 1, #Config.ClothingComponents do
+        local category = Config.ClothingComponents[i]
+        if name == category.name and category.hash ~= 0 then
+            return IsPedUsingComponent(ped, category.hash)
+        end
+    end
+    return false
 end)
