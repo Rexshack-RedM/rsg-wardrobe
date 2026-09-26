@@ -88,7 +88,7 @@ RSGCore.Commands.Add('dress', locale('sv_text_34'), {}, false, function(source)
         _clothes = {}
     end
     if _clothes and next(_clothes) then
-        TriggerClientEvent('rsg-appearance:client:ApplyClothes', src, _clothes)
+        TriggerClientEvent('rsg-character:client:ApplyClothes', src, _clothes)
     end
 end)
 
@@ -111,6 +111,6 @@ exports('DressPlayer', function(source)
         _clothes = {}
     end
     if _clothes and next(_clothes) then
-        TriggerClientEvent('rsg-appearance:client:ApplyClothes', source, _clothes)
+        TriggerClientEvent('rsg-character:client:ApplyClothes', source, _clothes)
     end
 end)
