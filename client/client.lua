@@ -183,7 +183,7 @@ AddEventHandler('RSGCore:Client:OnPlayerLoaded', function()
         local ped = PlayerPedId()
         local male = IsPedMale(ped)
 
-        local bodyComponents = exports['rsg-appearance']:GetBodyComponents()
+        local bodyComponents = exports['rsg-character']:GetBodyComponents()
 
         if male then
             ComponentsMale = bodyComponents[1]
@@ -217,7 +217,7 @@ local function toggleClothing(clothingName)
 
                 -- Need to remove boot as well to avoid blank lower body
                 if clothingData['currentBoots'] == 0 then
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     clothingData['currentBoots'] = ClothesCache['boots'].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, 2004797167)
 
@@ -230,7 +230,7 @@ local function toggleClothing(clothingName)
                 end
 
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     clothingData[data] = ClothesCache[comps].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
@@ -249,7 +249,7 @@ local function toggleClothing(clothingName)
 
             if name == 'sleeve' then
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     clothingData[data] = ClothesCache[comps].hash
                     UpdateWearableState(playerPed, clothingData[data], `closed_collar_rolled_sleeve`, 0, true , 1)
                 else
@@ -263,7 +263,7 @@ local function toggleClothing(clothingName)
             if name == 'collar1' then
 
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     clothingData[data] = ClothesCache[comps].hash
                     UpdateWearableState(playerPed, clothingData[data], `open_collar_rolled_sleeve`, 0, true , 1)
                 else
@@ -276,7 +276,7 @@ local function toggleClothing(clothingName)
 
             if name == 'collar2' then
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     clothingData[data] = ClothesCache[comps].hash
                     UpdateWearableState(playerPed, clothingData[data], `open_collar_full_sleeve`, 0, true , 1)
                 else
@@ -323,7 +323,7 @@ local function toggleClothing(clothingName)
                         LoadUpperBody(playerPed, playerSkin)
                     end
                 else
-                    ClothesCache = exports['rsg-appearance']:GetClothesCache()
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
                     if not ClothesCache[comps] or not ClothesCache[comps].hash then return end
                     clothingData[data] = ClothesCache[comps].hash
                     NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
