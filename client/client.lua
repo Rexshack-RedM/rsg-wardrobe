@@ -287,11 +287,24 @@ local function toggleClothing(clothingName)
                 goto continue
             end
 
+            -- Item was removed by us earlier: put the stored hash back
+            if clothingData[data] ~= 0 then
+                NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
+                clothingData[data] = 0
+                goto continue
+            end
+
             if clothingData[data] == 0 then
 
                 local isWearingComps = IsPedUsingComponent(playerPed, hash)
 
                 if isWearingComps then
+                    -- Remember what was worn so the next toggle can restore it
+                    ClothesCache = exports['rsg-character']:GetClothesCache()
+                    if ClothesCache and ClothesCache[comps] and ClothesCache[comps].hash then
+                        clothingData[data] = ClothesCache[comps].hash
+                    end
+
                     RemoveItemFromPedByCategory(playerPed, hash)
 
                     if name == 'chaps'

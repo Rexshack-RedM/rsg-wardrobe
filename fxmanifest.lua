@@ -3,11 +3,11 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 game 'rdr3'
 
 description 'rsg-wardrobe'
-version '2.0.4'
+version '2.0.5'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'config.lua',
+    'shared/config.lua',
 }
 
 client_scripts {
