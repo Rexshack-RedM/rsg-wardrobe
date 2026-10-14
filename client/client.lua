@@ -35,6 +35,7 @@ local clothingData =
     currentSkirts       = 0,
     currentSleeve       = 0,
     currentCollar       = 0,
+    currentCollar2      = 0,
     currentSuspenders   = 0,
     currentVest         = 0,
     currentHolsterRight = 0,
@@ -42,6 +43,20 @@ local clothingData =
     currentRightring    = 0,
     currentHairAccessories = 0,
 }
+
+local GetCachedHash = function(comps)
+    local cache = exports['rsg-character']:GetClothesCache()
+    if cache and cache[comps] and cache[comps].hash and cache[comps].hash ~= 0 then
+        return cache[comps].hash
+    end
+    return nil
+end
+
+local ResetClothingData = function()
+    for k in pairs(clothingData) do
+        clothingData[k] = 0
+    end
+end
 
 local RemoveItemFromPedByCategory = function(ped, clothCategory)
     Citizen.InvokeNative(0xDF631E4BCE1B1FC4, ped, clothCategory, true, true, true)
@@ -173,10 +188,7 @@ local LoadLowerBody = function(target, data)
     end
 end
 
-RegisterNetEvent('RSGCore:Client:OnPlayerLoaded')
-AddEventHandler('RSGCore:Client:OnPlayerLoaded', function()
-    Wait(3000)
-
+local function LoadPlayerSkin()
     RSGCore.Functions.TriggerCallback('rsg-wardrobe:server:getPlayerSkin', function(result)
         if not result or not result.skin then return end
 
@@ -191,8 +203,27 @@ AddEventHandler('RSGCore:Client:OnPlayerLoaded', function()
             ComponentsFemale = bodyComponents[1]
         end
 
-        playerSkin = json.decode(result.skin)
+        playerSkin = json.decode(result.skin) or {}
     end)
+end
+
+RegisterNetEvent('RSGCore:Client:OnPlayerLoaded')
+AddEventHandler('RSGCore:Client:OnPlayerLoaded', function()
+    Wait(3000)
+    ResetClothingData()
+    LoadPlayerSkin()
+end)
+
+AddEventHandler('onResourceStart', function(resource)
+    if resource ~= GetCurrentResourceName() then return end
+    if not LocalPlayer.state.isLoggedIn then return end
+    Wait(1000)
+    LoadPlayerSkin()
+end)
+
+-- Any outfit applied by rsg-character makes our toggle memory stale
+AddEventHandler('rsg-character:client:ApplyClothes', function()
+    ResetClothingData()
 end)
 
 local function toggleClothing(clothingName)
@@ -217,11 +248,11 @@ local function toggleClothing(clothingName)
 
                 -- Need to remove boot as well to avoid blank lower body
                 if clothingData['currentBoots'] == 0 then
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    clothingData['currentBoots'] = ClothesCache['boots'].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, 2004797167)
+                    local bootsHash = GetCachedHash('boots')
 
-                    if isWearingComps then
+                    if isWearingComps and bootsHash then
+                        clothingData['currentBoots'] = bootsHash
                         RemoveItemFromPedByCategory(playerPed, 2004797167)
                     end
                 else
@@ -230,11 +261,11 @@ local function toggleClothing(clothingName)
                 end
 
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    clothingData[data] = ClothesCache[comps].hash
                     local isWearingComps = IsPedUsingComponent(playerPed, hash)
+                    local cached = GetCachedHash(comps)
 
-                    if isWearingComps then
+                    if isWearingComps and cached then
+                        clothingData[data] = cached
                         RemoveItemFromPedByCategory(playerPed, hash)
                         Wait(10)
                         LoadLowerBody(playerPed, playerSkin)
@@ -249,8 +280,9 @@ local function toggleClothing(clothingName)
 
             if name == 'sleeve' then
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    clothingData[data] = ClothesCache[comps].hash
+                    local cached = GetCachedHash(comps)
+                    if not cached or not IsPedUsingComponent(playerPed, 539411565) then goto continue end
+                    clothingData[data] = cached
                     UpdateWearableState(playerPed, clothingData[data], `closed_collar_rolled_sleeve`, 0, true , 1)
                 else
                     UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
@@ -263,8 +295,9 @@ local function toggleClothing(clothingName)
             if name == 'collar1' then
 
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    clothingData[data] = ClothesCache[comps].hash
+                    local cached = GetCachedHash(comps)
+                    if not cached or not IsPedUsingComponent(playerPed, 539411565) then goto continue end
+                    clothingData[data] = cached
                     UpdateWearableState(playerPed, clothingData[data], `open_collar_rolled_sleeve`, 0, true , 1)
                 else
                     UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
@@ -276,8 +309,9 @@ local function toggleClothing(clothingName)
 
             if name == 'collar2' then
                 if clothingData[data] == 0 then
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    clothingData[data] = ClothesCache[comps].hash
+                    local cached = GetCachedHash(comps)
+                    if not cached or not IsPedUsingComponent(playerPed, 539411565) then goto continue end
+                    clothingData[data] = cached
                     UpdateWearableState(playerPed, clothingData[data], `open_collar_full_sleeve`, 0, true , 1)
                 else
                     UpdateWearableState(playerPed, clothingData[data], `BASE`, 0, true , 1)
@@ -300,9 +334,9 @@ local function toggleClothing(clothingName)
 
                 if isWearingComps then
                     -- Remember what was worn so the next toggle can restore it
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    if ClothesCache and ClothesCache[comps] and ClothesCache[comps].hash then
-                        clothingData[data] = ClothesCache[comps].hash
+                    local cached = GetCachedHash(comps)
+                    if cached then
+                        clothingData[data] = cached
                     end
 
                     RemoveItemFromPedByCategory(playerPed, hash)
@@ -336,11 +370,9 @@ local function toggleClothing(clothingName)
                         LoadUpperBody(playerPed, playerSkin)
                     end
                 else
-                    ClothesCache = exports['rsg-character']:GetClothesCache()
-                    if not ClothesCache[comps] or not ClothesCache[comps].hash then return end
-                    clothingData[data] = ClothesCache[comps].hash
-                    NativeSetPedComponentEnabled(playerPed, clothingData[data], false, true)
-                    clothingData[data] = 0
+                    local cached = GetCachedHash(comps)
+                    if not cached then return end
+                    NativeSetPedComponentEnabled(playerPed, cached, false, true)
                 end
             end
 
@@ -376,8 +408,18 @@ local function removeAllClothing()
             end
         end
     end
+
+    ResetClothingData()
 end
 
+local function dressPlayer(clothes)
+    if type(clothes) ~= 'table' or not next(clothes) then return end
+    removeAllClothing()
+    Wait(100)
+    TriggerEvent('rsg-character:client:ApplyClothes', clothes)
+end
+
+RegisterNetEvent('rsg-wardrobe:client:dress', dressPlayer)
 RegisterNetEvent('rsg-wardrobe:client:removeAllClothing', removeAllClothing)
 exports('RemoveAllClothing', removeAllClothing)
 
