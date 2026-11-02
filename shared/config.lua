@@ -1,5 +1,41 @@
 Config = {
     RequiredPermission = '', -- e.g. 'wardrobe' requires command.wardrobe ace; empty = no restriction
+    CommandCooldown = 750,   -- ms between wardrobe commands per player (anti-spam)
+    KeepRemovedOnRevive = true, -- re-remove toggled-off items after rsg-medic revives the player
+}
+
+-- Wardrobe menu (NUI)
+Config.Menu = {
+    Command = 'wardrobe',   -- /wardrobe opens the menu
+}
+
+-- Saved outfits (uses rsg-character's playeroutfit table, no extra tables needed)
+Config.Outfits = {
+    Enabled    = true,
+    MaxOutfits = 30,        -- per character, excluding the protected Default outfit (match rsg-character)
+}
+
+-- Animated hat on/off + hat tip emote
+-- anim from rdr3_discoveries animations/ingameanims/ingameanims_list.lua
+-- emote from rdr3_discoveries animations/kit_emotes_list/kit_emotes_list.lua
+Config.HatAnimation = {
+    Enabled     = true,
+    Anim        = { dict = 'mech_loco_m@character@arthur@fidgets@hat@normal@unarmed@normal@right_hand', clip = 'hat_rhand_a', duration = 2200 },
+    SwapAt      = 900,      -- ms into the anim when the hat is removed/put on
+    FinishAfter = 700,      -- ms to let the anim finish after the swap
+    TipEmote    = 'KIT_EMOTE_GREET_HAT_TIP_1',
+    TipCommand  = 'hattip', -- set to false to disable /hattip
+}
+
+-- Clothing care: brush off dirt/blood and dry wet clothes
+-- anims from rdr3_discoveries animations/ingameanims/ingameanims_list.lua
+Config.Care = {
+    Enabled          = true,
+    BrushCommand     = 'brushoff',
+    DryCommand       = 'dryoff',
+    BrushClearsBlood = true,
+    BrushAnim        = { dict = 'mech_loco@player@zero@generic@streamed_idles@a', clip = 'fidget_dust_off', duration = 4000 },
+    DryAnim          = { dict = 'mech_loco@generic@fallback@streamed_idles@shake_off', clip = 'fidget_wet', duration = 3500 },
 }
 
 Config.ClothingComponents =

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+    <div class="panel">
+        <div class="header">
+            <span class="circle-btn ghost"></span>
+            <div class="titles">
+                <div class="title" data-t="wardrobe_title"></div>
+                <div class="subtitle" data-t="ui_subtitle"></div>
+            </div>
+            <button class="circle-btn" id="close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="clothing" data-t="ui_tab_clothing"></button>
+            <button class="tab" data-tab="outfits" data-t="ui_tab_outfits" id="tab-outfits"></button>
+            <button class="tab" data-tab="care" data-t="ui_tab_care" id="tab-care"></button>
+        </div>
+        <div class="divider"><span>✦</span></div>
+
+        <section class="view" id="view-clothing">
+            <div class="grid" id="slots"></div>
+            <div class="actions">
+                <button class="wood-btn muted" id="undress" data-t="ui_undress"></button>
+                <button class="wood-btn" id="dress" data-t="ui_dress"></button>
+            </div>
+        </section>
+
+        <section class="view hidden" id="view-outfits">
+            <div class="list" id="outfits"></div>
+            <div class="actions">
+                <button class="wood-btn" id="save-open" data-t="ui_save_outfit"></button>
+            </div>
+        </section>
+
+        <section class="view hidden" id="view-care">
+            <div class="stat">
+                <div class="stat-label"><span data-t="ui_dirt"></span><span id="dirt-val"></span></div>
+                <div class="track"><div class="fill" id="dirt-fill"></div></div>
+            </div>
+            <div class="list">
+                <div class="row" data-care="brush">
+                    <div class="badge"><i class="fa-solid fa-broom"></i></div>
+                    <div class="row-text"><div class="row-title" data-t="ui_brush"></div><div class="row-desc" data-t="ui_brush_desc"></div></div>
+                </div>
+                <div class="row" data-care="dry">
+                    <div class="badge"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="row-text"><div class="row-title" data-t="ui_dry"></div><div class="row-desc" data-t="ui_dry_desc"></div></div>
+                </div>
+                <div class="row" data-care="hattip">
+                    <div class="badge"><i class="fa-solid fa-hat-cowboy"></i></div>
+                    <div class="row-text"><div class="row-title" data-t="ui_hattip"></div><div class="row-desc" data-t="ui_hattip_desc"></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal-bg hidden" id="modal">
+        <div class="modal">
+            <div class="modal-title" id="modal-title"></div>
+            <div class="ink-divider"></div>
+            <input type="text" id="modal-input" maxlength="40">
+            <div class="modal-actions">
+                <button class="wood-btn muted" id="modal-cancel" data-t="ui_cancel"></button>
+                <button class="wood-btn" id="modal-ok"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
