@@ -164,4 +164,4 @@ No tables of its own. Uses rsg-character's tables:
 
 ---
 
-Support: https://buymeacoffee.com/rexshack
+Support the Project : https://rexshack.tebex.store/
