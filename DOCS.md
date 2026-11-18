@@ -165,3 +165,119 @@ No tables of its own. Uses rsg-character's tables:
 ---
 
 Support the Project : https://rexshack.tebex.store/
+
+<!-- BEGIN AUTO-REFERENCE (generated from the code; re-run the generator instead of editing by hand) -->
+
+## Technical reference
+
+Generated from the source of **rsg-wardrobe 3.1.0**. Names, arguments and defaults below are read straight from the code.
+
+### Dependencies
+
+`rsg-core`, `rsg-character`, `oxmysql`
+
+### Configuration
+
+| Option | Default | Notes |
+|---|---|---|
+| `Config.RequiredPermission` | `''` |  |
+| `Config.CommandCooldown` | `750` |  |
+| `Config.KeepRemovedOnRevive` | `true` |  |
+| `Config.Menu` | `table` | Wardrobe menu (NUI) |
+| `Config.Command` | `'wardrobe'` |  |
+| `Config.Outfits` | `table` | Saved outfits (uses rsg-character's playeroutfit table, no extra tables needed) |
+| `Config.Enabled` | `true` |  |
+| `Config.MaxOutfits` | `30` |  |
+| `Config.HatAnimation` | `table` | emote from rdr3_discoveries animations/kit_emotes_list/kit_emotes_list.lua |
+| `Config.Anim` | `{ dict = 'mech_loco_m@character@arthur@fidgets@hat@normal@unarmed@norm` |  |
+| `Config.SwapAt` | `900` |  |
+| `Config.FinishAfter` | `700` |  |
+| `Config.TipEmote` | `'KIT_EMOTE_GREET_HAT_TIP_1'` |  |
+| `Config.TipCommand` | `'hattip'` |  |
+| `Config.Care` | `table` | anims from rdr3_discoveries animations/ingameanims/ingameanims_list.lua |
+| `Config.BrushCommand` | `'brushoff'` |  |
+| `Config.DryCommand` | `'dryoff'` |  |
+| `Config.BrushClearsBlood` | `true` |  |
+| `Config.BrushAnim` | `{ dict = 'mech_loco@player@zero@generic@streamed_idles@a', clip = 'fid` |  |
+| `Config.DryAnim` | `{ dict = 'mech_loco@generic@fallback@streamed_idles@shake_off', clip =` |  |
+| `Config.ClothingComponents` | `` |  |
+| `Config.SkinColours` | `` |  |
+
+### Exports
+
+**Server**
+
+| Export | Arguments | File |
+|---|---|---|
+| `TogglePlayerClothing` | `source, name` | `server/server.lua` |
+| `RemovePlayerClothing` | `source` | `server/server.lua` |
+| `DressPlayer` | `source` | `server/server.lua` |
+
+**Client**
+
+| Export | Arguments | File |
+|---|---|---|
+| `GetClothingState` | `` | `client/client.lua` |
+| `ToggleClothing` | `` | `client/client.lua` |
+| `RemoveAllClothing` | `` | `client/client.lua` |
+| `IsWearing` | `name` | `client/client.lua` |
+| `CleanClothes` | `` | `client/menu.lua` |
+| `OpenWardrobe` | `` | `client/menu.lua` |
+
+```lua
+-- example
+local result = exports['rsg-wardrobe']:TogglePlayerClothing(source, name)
+```
+
+### Callbacks
+
+| Callback | Side | Arguments | File |
+|---|---|---|---|
+| `rsg-wardrobe:server:getPlayerSkin` | server | `source, cb` | `server/server.lua` |
+| `rsg-wardrobe:server:getOutfits` | server | `source, cb` | `server/server.lua` |
+| `rsg-wardrobe:server:saveOutfit` | server | `source, cb, name` | `server/server.lua` |
+| `rsg-wardrobe:server:deleteOutfit` | server | `source, cb, id` | `server/server.lua` |
+| `rsg-wardrobe:server:wearOutfit` | server | `source, cb, id` | `server/server.lua` |
+
+```lua
+-- client side
+RSGCore.Functions.TriggerCallback('rsg-wardrobe:server:getPlayerSkin', function(result)
+    -- use result
+end)
+```
+
+### Events
+
+Server events can be fired by any client, so every handler re-validates the player, the arguments and any permission, distance or cooldown on the server. Never add a reward to a handler without those checks.
+
+| Event | Side | Arguments | File |
+|---|---|---|---|
+| `RSGCore:Client:OnPlayerLoaded` | client | `` | `client/client.lua` |
+| `rsg-medic:client:revive` | client | `` | `client/client.lua` |
+| `rsg-wardrobe:client:OnOffClothing` | client | `` | `client/client.lua` |
+| `rsg-wardrobe:client:dress` | client | `` | `client/client.lua` |
+| `rsg-wardrobe:client:removeAllClothing` | client | `` | `client/client.lua` |
+| `rsg-wardrobe:client:openMenu` | client | `` | `client/menu.lua` |
+| `rsg-wardrobe:server:toggle` | server | `name` | `server/server.lua` |
+| `rsg-wardrobe:server:undress` | server | `` | `server/server.lua` |
+| `rsg-wardrobe:server:dress` | server | `` | `server/server.lua` |
+
+```lua
+-- from a client script
+TriggerServerEvent('rsg-wardrobe:server:toggle', name)
+-- from a server script
+TriggerClientEvent('RSGCore:Client:OnPlayerLoaded', source)
+```
+
+### Commands
+
+| Command | Notes | File |
+|---|---|---|
+| `/undress` | locale('sv_text_35') | `server/server.lua` |
+| `/dress` | locale('sv_text_34') | `server/server.lua` |
+
+### Locales
+
+Language files in `locales/`: `cs`, `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`. Set the language with `setr rsg:locale "en"`.
+
+<!-- END AUTO-REFERENCE -->
