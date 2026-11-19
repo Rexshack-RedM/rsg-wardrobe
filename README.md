@@ -132,7 +132,7 @@ local removed = Player(src).state.wardrobeRemoved
 
 ## Locales
 
-`en`, `de`, `el`, `es`, `fr`, `ja`, `nl`, `pl`, `pt-br`, `ro` (plus `cs`, `it`). Set the language with `setr rsg:locale de`.
+`en`, `de`, `el`, `es`, `fr`, `ja`, `nl`, `pl`, `pt-br`, `ro`, `ru` (plus `cs`, `it`). Set the language with `setr rsg:locale de`.
 
 ---
 

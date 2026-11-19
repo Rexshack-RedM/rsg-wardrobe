@@ -278,6 +278,6 @@ TriggerClientEvent('RSGCore:Client:OnPlayerLoaded', source)
 
 ### Locales
 
-Language files in `locales/`: `cs`, `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`. Set the language with `setr rsg:locale "en"`.
+Language files in `locales/`: `cs`, `de`, `el`, `en`, `es`, `fr`, `it`, `ja`, `nl`, `pl`, `pt-br`, `ro`, `ru`. Set the language with `setr rsg:locale "en"`.
 
 <!-- END AUTO-REFERENCE -->
